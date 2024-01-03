@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <div className="container relative block mx-auto px-10 mb-8">
       <div className="border-b w-full inline-block py-8">
-        <div className='top-0 right-0 left-0 h-[15px] bg-[url("https://www.everywhereist.com/wp-content/themes/everywhereist-v3/images/bg-beige.jpg")] absolute '></div>
+        <div className='top-0 right-0 left-0 h-[15px] bg-[url("https://www.everywhereist.com/wp-content/themes/everywhereist-v3/images/bg-light-green.jpg")] absolute '></div>
         <div className="sm:w-[375px] w-[300px] mx-[auto] block my-[0] z-10 relative sm-w-[280px]">
           <Link href="/">
             <img
