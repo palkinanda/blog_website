@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { grpahCMSImageLoader } from '../util';
 
 const PostCard = ({ post }) => (
-  <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
+  <div className="bg-[#fff]  p-0 lg:p-8 pb-12 mb-8">
     {/* <div className="relative shadow-md inline-block w-full h-60 lg:h-80 mb-6">
       <Image
         unoptimized
@@ -17,42 +17,47 @@ const PostCard = ({ post }) => (
         src={post.featuredImage.url}
       />
     </div> */}
-    <div className="relative overflow-hidden shadow-md pb-80 mb-6">
-      <img src={post.featuredImage.url} alt="" className="object-top absolute h-80 w-full object-cover  shadow-lg rounded-t-lg lg:rounded-lg" />
+    <div className='block relative pt-0 pr-[170px] pb-0 pl-0 '>
+      <h1 className="transition duration-700 mb-8 cursor-pointer hover:text-[#3e9776] text-3xl font-bold font-sans text-[46px]">
+        <Link href={`/post/${post.slug}`}>{post.title}</Link>
+      </h1>
+      <div className='absolute right-0 bottom-0 w-[105px] min-h-[62px] pt-[15px] pr-[5px] pb-0 pl-0 font-sans text-right font-bold text-[14px] leading-[18px] bg-[url("https://www.everywhereist.com/wp-content/themes/everywhereist-v3/images/date-arrow.png")] '>Posted on
+        <div className="text-[#f53145] mt-[5px] mr-0 mb-0 ">
+        {moment(post.createdAt).format('MMM DD, YYYY')}
+        </div>
+      </div>
+    </div>
+    
+    <div className="relative overflow-hidden pb-80 mb-6">
+      <img src={post.featuredImage.url} alt="" className="object-top absolute pb-[56%] w-[100%] object-cover   " />
     </div>
 
-    <h1 className="transition duration-700 text-center mb-8 cursor-pointer hover:text-[#ff4545] text-3xl font-semibold">
-      <Link href={`/post/${post.slug}`}>{post.title}</Link>
-    </h1>
-    <div className="block lg:flex text-center items-center justify-center mb-8 w-full">
-      <div className="flex items-center justify-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
+   
+    <div className="block lg:flex  mb-[30px] font-sans text-black w-full text-base leading-8">
+      <div className=" flex items-center justify-center ml-1 mb-4 lg:mb-0 w-full lg:w-auto mr-8">Posted by   
         <Image
           unoptimized
           loader={grpahCMSImageLoader}
           alt={post.author.name}
-          height="30"
-          width="30"
-          className="align-middle rounded-full"
+          height="40"
+          width="40"
+          className="align-middle rounded-full ml-[10px]"
           src={post.author.photo.url}
         />
-        <p className="inline align-middle text-gray-700 ml-2 font-medium text-lg">{post.author.name}</p>
-      </div>
-      <div className="font-medium text-gray-700">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 text-[#ff4545]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <span className="align-middle">{moment(post.createdAt).format('MMM DD, YYYY')}</span>
+        <p className="inline text-[#88b198] font-small align-middle  ml-2 text-lg">{post.author.name}</p>
       </div>
     </div>
-    <p className="text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8">
-      {post.excerpt}
-    </p>
-    <div className="text-center">
-      <Link href={`/post/${post.slug}`}>
-        <span className="transition duration-500 ease transform hover:-translate-y-1 inline-block bg-[#45433e] text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer">Continue Reading</span>
-      </Link>
-    </div>
+    <div className='block text-base leading-8 text-gray-900 '>
+      <p className=" text-lg  font-normal  mb-8">
+        {post.excerpt}
+      </p>
+      <div >
+        <Link href={`/post/${post.slug}`}>
+          <span className=" relative transition duration-500 ease uppercase text-sm transform hover:-translate-y-1 inline-block leading-4 font-medium text-center text-white pt-[12px] pr-[20px] cursor-pointer bg-[#88b198] ">Keep Reading </span>
+        </Link>
+      </div>
   </div>
+</div>
 );
 
 export default PostCard;
